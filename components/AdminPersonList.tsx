@@ -450,7 +450,7 @@ export default function AdminPersonList({ people, onRefresh }: AdminPersonListPr
                     </div>
 
                     <div className="detail-section">
-                      <h3><FaBox /> Lost Items</h3>
+                      <h3><FaBox /> Damaged and Lost Items</h3>
                       {lostItems && lostItems.length > 0 ? (
                         <div className="lost-items-display">
                           {lostItems.map((item, idx) => (

@@ -20,12 +20,16 @@ interface LostItemRow {
 }
 
 const LOST_ITEM_OPTIONS = [
-  'TV',
-  'Sofa',
-  'Cupboards',
-  'kitchen items',
-  'fridge',
-  'washing machine',
+  'Refrigerator',
+  'Oven / Gas cooker',
+  'Water heater',
+  'Air conditioner',
+  'Fans (floor or standing)',
+  'Television',
+  'Home theatre system',
+  'Desktop computer / Laptops (if kept lower)',
+  'Blender',
+  'Iron',
   'Other'
 ];
 
@@ -554,7 +558,7 @@ export default function PersonForm({ person, onSubmit, onCancel }: PersonFormPro
       <div className="form-group lost-items-section">
         <div className="lost-items-header">
           <label>
-            <FaBox className="label-icon" /> Lost Items
+            <FaBox className="label-icon" /> Damaged and Lost Items
           </label>
           <button
             type="button"
