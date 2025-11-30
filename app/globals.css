@@ -79,6 +79,15 @@ input, textarea, select {
   font-weight: 300;
 }
 
+.district-mention {
+  font-size: 0.95rem;
+  opacity: 0.9;
+  font-weight: 400;
+  font-style: italic;
+  margin-top: 8px;
+  margin-bottom: 0;
+}
+
 .main-content {
   display: flex;
   flex-direction: column;

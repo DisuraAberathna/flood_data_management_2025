@@ -88,6 +88,7 @@ export default function AdminDashboard() {
             </div>
             <h1>Admin Dashboard</h1>
             <p className="subtitle">Manage flood data records</p>
+            <p className="district-mention">Specially for Anuradhapura District People</p>
           </div>
           <div className="header-actions">
             <a href="/" className="btn btn-header-primary">

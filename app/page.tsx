@@ -46,6 +46,7 @@ export default function Home() {
         </div>
         <h1>FloodCare</h1>
         <p className="subtitle">Register isolated people from floods</p>
+        <p className="district-mention">Specially for Anuradhapura District People</p>
         <div className="admin-link">
           <Link href="/admin/login" className="admin-link-btn">
             <FaUserShield /> Admin Login
