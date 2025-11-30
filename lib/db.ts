@@ -23,8 +23,8 @@ export async function initDatabase() {
         number_of_members INT NOT NULL,
         address TEXT NOT NULL,
         house_state VARCHAR(100) NOT NULL,
-        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-        updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+        created_at DATETIME DEFAULT NULL,
+        updated_at DATETIME DEFAULT NULL
       )
     `);
     

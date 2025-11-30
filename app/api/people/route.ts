@@ -40,9 +40,10 @@ export async function POST(request: NextRequest) {
       );
     }
 
+    const now = new Date().toISOString().slice(0, 19).replace('T', ' ');
     const [result]: any = await pool.query(
-      'INSERT INTO isolated_people (name, age, number_of_members, address, house_state) VALUES (?, ?, ?, ?, ?)',
-      [name, age, number_of_members, address, house_state]
+      'INSERT INTO isolated_people (name, age, number_of_members, address, house_state, created_at, updated_at) VALUES (?, ?, ?, ?, ?, ?, ?)',
+      [name, age, number_of_members, address, house_state, now, now]
     );
 
     return NextResponse.json(

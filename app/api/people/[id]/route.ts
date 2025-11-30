@@ -45,9 +45,10 @@ export async function PUT(
       );
     }
 
+    const now = new Date().toISOString().slice(0, 19).replace('T', ' ');
     const [result]: any = await pool.query(
-      'UPDATE isolated_people SET name = ?, age = ?, number_of_members = ?, address = ?, house_state = ? WHERE id = ?',
-      [name, age, number_of_members, address, house_state, params.id]
+      'UPDATE isolated_people SET name = ?, age = ?, number_of_members = ?, address = ?, house_state = ?, updated_at = ? WHERE id = ?',
+      [name, age, number_of_members, address, house_state, now, params.id]
     );
 
     if (result.affectedRows === 0) {
