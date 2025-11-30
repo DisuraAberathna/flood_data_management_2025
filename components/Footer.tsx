@@ -10,7 +10,7 @@ export default function Footer() {
       <div className="footer-content">
         <div className="footer-item">
           <FaCopyright className="footer-icon" />
-          <span>{currentYear} Flood Data Management. All rights reserved.</span>
+          <span>{currentYear} FloodCare. All rights reserved.</span>
         </div>
         <div className="footer-item">
           <FaCode className="footer-icon" />

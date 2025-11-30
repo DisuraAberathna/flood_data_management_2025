@@ -15,8 +15,28 @@ async function ensureDbInitialized() {
 export async function GET() {
   try {
     await ensureDbInitialized();
-    const [rows] = await pool.query('SELECT * FROM isolated_people ORDER BY created_at DESC');
-    return NextResponse.json(rows);
+    const [rows]: any = await pool.query('SELECT * FROM isolated_people ORDER BY created_at DESC');
+    
+    // Parse lost_items and family_members JSON for each row
+    const people = rows.map((row: any) => {
+      if (row.lost_items) {
+        try {
+          row.lost_items = typeof row.lost_items === 'string' ? JSON.parse(row.lost_items) : row.lost_items;
+        } catch (e) {
+          row.lost_items = null;
+        }
+      }
+      if (row.family_members) {
+        try {
+          row.family_members = typeof row.family_members === 'string' ? JSON.parse(row.family_members) : row.family_members;
+        } catch (e) {
+          row.family_members = null;
+        }
+      }
+      return row;
+    });
+    
+    return NextResponse.json(people);
   } catch (error: any) {
     console.error('Error fetching people:', error);
     return NextResponse.json(
@@ -31,23 +51,35 @@ export async function POST(request: NextRequest) {
   try {
     await ensureDbInitialized();
     const body = await request.json();
-    const { name, age, number_of_members, address, house_state } = body;
+    const { name, age, nic, number_of_members, address, house_state, location, lost_items, family_members } = body;
 
-    if (!name || !age || !number_of_members || !address || !house_state) {
+    if (!name || !age || !address || !house_state || !location) {
       return NextResponse.json(
-        { error: 'All fields are required' },
+        { error: 'All required fields must be provided' },
         { status: 400 }
       );
     }
 
+    // Auto-calculate number_of_members from family_members if provided
+    // If no family members, default to 1 (the person themselves)
+    let calculatedMembers = number_of_members;
+    if (family_members && Array.isArray(family_members) && family_members.length > 0) {
+      calculatedMembers = family_members.length;
+    } else if (!calculatedMembers || calculatedMembers < 1) {
+      calculatedMembers = 1; // Default to 1 if no family members provided
+    }
+
     const now = new Date().toISOString().slice(0, 19).replace('T', ' ');
+    const lostItemsJson = lost_items && Array.isArray(lost_items) ? JSON.stringify(lost_items) : null;
+    const familyMembersJson = family_members && Array.isArray(family_members) ? JSON.stringify(family_members) : null;
+    
     const [result]: any = await pool.query(
-      'INSERT INTO isolated_people (name, age, number_of_members, address, house_state, created_at, updated_at) VALUES (?, ?, ?, ?, ?, ?, ?)',
-      [name, age, number_of_members, address, house_state, now, now]
+      'INSERT INTO isolated_people (name, age, nic, number_of_members, address, house_state, location, lost_items, family_members, created_at, updated_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)',
+      [name, age, nic || null, calculatedMembers, address, house_state, location, lostItemsJson, familyMembersJson, now, now]
     );
 
     return NextResponse.json(
-      { id: result.insertId, message: 'Person added successfully' },
+      { id: result.insertId, message: 'Person registered successfully' },
       { status: 201 }
     );
   } catch (error: any) {

@@ -30,7 +30,7 @@ export default function Home() {
         // Success toast is handled in PersonForm component
       } else {
         const error = await response.json();
-        toast.error(error.error || 'Failed to add person');
+        toast.error(error.error || 'Failed to register person');
       }
     } catch (error) {
       console.error('Error submitting form:', error);
@@ -44,7 +44,7 @@ export default function Home() {
         <div className="header-icon">
           <FaWater size={32} />
         </div>
-        <h1>Flood Data Management</h1>
+        <h1>FloodCare</h1>
         <p className="subtitle">Register isolated people from floods</p>
         <div className="admin-link">
           <Link href="/admin/login" className="admin-link-btn">
@@ -55,7 +55,7 @@ export default function Home() {
 
       <main className="main-content">
         <section className="form-section">
-          <h2>Add New Person</h2>
+          <h2>Register Person</h2>
           <PersonForm onSubmit={handleSubmit} />
         </section>
       </main>
