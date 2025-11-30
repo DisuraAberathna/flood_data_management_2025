@@ -8,13 +8,26 @@ import { gnList, getDivisionalSecretariats, getGNNamesBySecretariat, type GNItem
 interface LostItem {
   name: string;
   quantity: number;
+  price?: number;
 }
 
 interface LostItemRow {
   id: number;
   name: string;
   quantity: number;
+  price: number;
+  isOther: boolean;
 }
+
+const LOST_ITEM_OPTIONS = [
+  'TV',
+  'Sofa',
+  'Cupboards',
+  'kitchen items',
+  'fridge',
+  'washing machine',
+  'Other'
+];
 
 interface FamilyMember {
   name: string;
@@ -64,11 +77,16 @@ export default function PersonForm({ person, onSubmit, onCancel }: PersonFormPro
   });
   const [lostItemRows, setLostItemRows] = useState<LostItemRow[]>(() => {
     if (person?.lost_items && person.lost_items.length > 0) {
-      return person.lost_items.map((item, index) => ({
-        id: Date.now() + index,
-        name: item.name,
-        quantity: item.quantity,
-      }));
+      return person.lost_items.map((item, index) => {
+        const isOther = !LOST_ITEM_OPTIONS.slice(0, -1).includes(item.name);
+        return {
+          id: Date.now() + index,
+          name: item.name,
+          quantity: item.quantity,
+          price: item.price || 0,
+          isOther: isOther,
+        };
+      });
     }
     return [];
   });
@@ -220,16 +238,26 @@ export default function PersonForm({ person, onSubmit, onCancel }: PersonFormPro
       id: Date.now() + nextRowId,
       name: '',
       quantity: 1,
+      price: 0,
+      isOther: false,
     };
     setLostItemRows([...lostItemRows, newRow]);
     setNextRowId(nextRowId + 1);
   };
 
-  const handleUpdateLostItemRow = (id: number, field: 'name' | 'quantity', value: string | number) => {
+  const handleUpdateLostItemRow = (id: number, field: 'name' | 'quantity' | 'price' | 'isOther', value: string | number | boolean) => {
     setLostItemRows(
-      lostItemRows.map((row) =>
-        row.id === id ? { ...row, [field]: value } : row
-      )
+      lostItemRows.map((row) => {
+        if (row.id === id) {
+          if (field === 'name' && value === 'Other') {
+            return { ...row, name: '', isOther: true };
+          } else if (field === 'name' && value !== 'Other' && typeof value === 'string') {
+            return { ...row, name: value, isOther: false };
+          }
+          return { ...row, [field]: value };
+        }
+        return row;
+      })
     );
   };
 
@@ -274,6 +302,7 @@ export default function PersonForm({ person, onSubmit, onCancel }: PersonFormPro
       .map((row) => ({
         name: row.name.trim(),
         quantity: row.quantity,
+        price: row.price > 0 ? row.price : undefined,
       }));
 
     // Collect family members from rows (filter out empty rows)
@@ -537,15 +566,36 @@ export default function PersonForm({ person, onSubmit, onCancel }: PersonFormPro
         </div>
         {lostItemRows.length > 0 && (
           <div className="lost-items-rows">
+            <div className="lost-item-header-row">
+              <span className="lost-item-label">Name</span>
+              <span className="lost-item-label">Qty</span>
+              <span className="lost-item-label">Price (LKR)</span>
+              <span className="lost-item-label"></span>
+            </div>
             {lostItemRows.map((row) => (
               <div key={row.id} className="lost-item-input-row">
-                <input
-                  type="text"
-                  value={row.name}
-                  onChange={(e) => handleUpdateLostItemRow(row.id, 'name', e.target.value)}
-                  placeholder="Item name"
-                  className="lost-item-name-input"
-                />
+                {row.isOther ? (
+                  <input
+                    type="text"
+                    value={row.name}
+                    onChange={(e) => handleUpdateLostItemRow(row.id, 'name', e.target.value)}
+                    placeholder="Enter item name"
+                    className="lost-item-name-input"
+                  />
+                ) : (
+                  <select
+                    value={row.name}
+                    onChange={(e) => handleUpdateLostItemRow(row.id, 'name', e.target.value)}
+                    className="lost-item-name-input"
+                  >
+                    <option value="">Select item</option>
+                    {LOST_ITEM_OPTIONS.map((option) => (
+                      <option key={option} value={option}>
+                        {option}
+                      </option>
+                    ))}
+                  </select>
+                )}
                 <input
                   type="number"
                   value={row.quantity}
@@ -553,6 +603,15 @@ export default function PersonForm({ person, onSubmit, onCancel }: PersonFormPro
                   min="1"
                   placeholder="Qty"
                   className="lost-item-qty-input"
+                />
+                <input
+                  type="number"
+                  value={row.price}
+                  onChange={(e) => handleUpdateLostItemRow(row.id, 'price', parseFloat(e.target.value) || 0)}
+                  min="0"
+                  step="0.01"
+                  placeholder="Price (LKR)"
+                  className="lost-item-price-input"
                 />
                 <button
                   type="button"
@@ -578,7 +637,7 @@ export default function PersonForm({ person, onSubmit, onCancel }: PersonFormPro
             </>
           ) : (
             <>
-              <FaSave /> Register Person
+              <FaSave /> Submit
             </>
           )}
         </button>

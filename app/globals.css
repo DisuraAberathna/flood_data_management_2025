@@ -304,6 +304,39 @@ select option:disabled {
   margin-top: 12px;
 }
 
+.lost-item-header-row {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  padding: 8px 0;
+  border-bottom: 1px solid #e0e0e0;
+  margin-bottom: 4px;
+}
+
+.lost-item-label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #6c757d;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.lost-item-label:first-child {
+  flex: 1;
+}
+
+.lost-item-label:nth-child(2) {
+  width: 80px;
+}
+
+.lost-item-label:nth-child(3) {
+  width: 200px;
+}
+
+.lost-item-label:nth-child(4) {
+  width: 42px;
+}
+
 .lost-item-input-row {
   display: flex;
   gap: 8px;
@@ -320,6 +353,13 @@ select option:disabled {
   font-size: 0.95rem;
   background-color: #fff;
   transition: all 0.3s ease;
+  color: #171c27;
+}
+
+.lost-item-name-input:focus {
+  outline: none;
+  border-color: #892AFA; /* primary color */
+  box-shadow: 0 0 0 3px rgba(137, 42, 250, 0.15);
 }
 
 .lost-item-name-input:focus {
@@ -339,6 +379,23 @@ select option:disabled {
 }
 
 .lost-item-qty-input:focus {
+  outline: none;
+  border-color: #892AFA; /* primary color */
+  box-shadow: 0 0 0 3px rgba(137, 42, 250, 0.15);
+}
+
+.lost-item-price-input {
+  width: 200px;
+  padding: 10px 14px;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+  background-color: #fff;
+  color: #171c27;
+}
+
+.lost-item-price-input:focus {
   outline: none;
   border-color: #892AFA; /* primary color */
   box-shadow: 0 0 0 3px rgba(137, 42, 250, 0.15);
@@ -392,8 +449,23 @@ select option:disabled {
   color: #171c27;
 }
 
+.lost-item-meta {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
 .lost-item-qty-badge {
   background-color: #892AFA; /* primary purple */
+  color: white;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-weight: 600;
+  font-size: 0.8rem;
+}
+
+.lost-item-price-badge {
+  background-color: #22d3ee; /* cyan-400 */
   color: white;
   padding: 2px 8px;
   border-radius: 4px;
@@ -936,6 +1008,10 @@ tbody td {
     width: 100%;
   }
 
+  .lost-item-header-row {
+    display: none;
+  }
+
   .lost-item-input-row {
     flex-direction: column;
     align-items: stretch;
@@ -947,6 +1023,10 @@ tbody td {
   }
 
   .lost-item-qty-input {
+    width: 100%;
+  }
+
+  .lost-item-price-input {
     width: 100%;
   }
 

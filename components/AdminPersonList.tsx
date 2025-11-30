@@ -7,6 +7,7 @@ import { gnList, getDivisionalSecretariats, getGNNamesBySecretariat } from '@/li
 interface LostItem {
   name: string;
   quantity: number;
+  price?: number;
 }
 
 interface FamilyMember {
@@ -455,7 +456,12 @@ export default function AdminPersonList({ people, onRefresh }: AdminPersonListPr
                           {lostItems.map((item, idx) => (
                             <div key={idx} className="lost-item-badge">
                               <span className="lost-item-name">{item.name}</span>
-                              <span className="lost-item-qty-badge">x{item.quantity}</span>
+                              <div className="lost-item-meta">
+                                <span className="lost-item-qty-badge">x{item.quantity}</span>
+                                {item.price && item.price > 0 && (
+                                  <span className="lost-item-price-badge">LKR {item.price.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</span>
+                                )}
+                              </div>
                             </div>
                           ))}
                         </div>
