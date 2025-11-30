@@ -536,7 +536,7 @@ select option:disabled {
 }
 
 .family-member-age-input {
-  width: 80px;
+  width: 100px;
   padding: 10px 14px;
   border: 2px solid #e0e0e0;
   border-radius: 8px;
@@ -568,8 +568,7 @@ select option:disabled {
 }
 
 .family-member-nic-input {
-  flex: 1;
-  min-width: 150px;
+  min-width: 170px;
   padding: 10px 14px;
   border: 2px solid #e0e0e0;
   border-radius: 8px;
