@@ -158,7 +158,7 @@ export default function AdminPersonList({ people, onRefresh }: AdminPersonListPr
   };
 
   const divisionalSecretariats = getDivisionalSecretariats();
-  const allGNDivisions = gnList.map(item => item.gnName);
+  const allGNDivisions = Array.from(new Set(gnList.map(item => item.gnName))).sort();
   const locations = ['all', ...allGNDivisions];
 
   return (
