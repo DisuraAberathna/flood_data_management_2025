@@ -4,8 +4,15 @@ export interface GNItem {
 }
 
 export const gnList: GNItem[] = [
+  { gnName: "Katukeliyawa", divisionalSecretariat: "Mihinthale" },
+  { gnName: "Kattambuwagama", divisionalSecretariat: "Mihinthale" },
+  { gnName: "Kahapathwilagama", divisionalSecretariat: "Mihinthale" },
+  { gnName: "Ihalagama", divisionalSecretariat: "Mihinthale" },
+  { gnName: "Maradankalla", divisionalSecretariat: "Mihinthale" },
+  { gnName: "Wellaragama", divisionalSecretariat: "Mihinthale" },
+
   { gnName: "Nuwarawewa", divisionalSecretariat: "Nuwaragam Palatha East" },
-  { gnName: "Stage (I) Part (I)", divisionalSecretariat: "Nuwaragam Palatha East" },
+  { gnName: "Stage (1) part (1)", divisionalSecretariat: "Nuwaragam Palatha East" },
   { gnName: "Maha Kalaththawa", divisionalSecretariat: "Nuwaragam Palatha East" },
   { gnName: "Thariyankulama", divisionalSecretariat: "Nuwaragam Palatha East" },
   { gnName: "Nelunkanniya", divisionalSecretariat: "Nuwaragam Palatha East" },
@@ -14,41 +21,141 @@ export const gnList: GNItem[] = [
   { gnName: "Thammannapura", divisionalSecretariat: "Nuwaragam Palatha East" },
   { gnName: "Vannithammannawa", divisionalSecretariat: "Nuwaragam Palatha East" },
   { gnName: "Thammannakulama", divisionalSecretariat: "Nuwaragam Palatha East" },
-  { gnName: "Stage (I) Part (II)", divisionalSecretariat: "Nuwaragam Palatha East" },
-  { gnName: "Stage (II) Part (III)", divisionalSecretariat: "Nuwaragam Palatha East" },
-  { gnName: "Stage (II) Part (II)", divisionalSecretariat: "Nuwaragam Palatha East" },
+  { gnName: "Stage (1) part (II)", divisionalSecretariat: "Nuwaragam Palatha East" },
+  { gnName: "Stage (II) part (III)", divisionalSecretariat: "Nuwaragam Palatha East" },
+  { gnName: "Stage (II) part (II)", divisionalSecretariat: "Nuwaragam Palatha East" },
   { gnName: "Pothanegama", divisionalSecretariat: "Nuwaragam Palatha East" },
-  { gnName: "Stage (III) Part (III)", divisionalSecretariat: "Nuwaragam Palatha East" },
-  { gnName: "Stage (II) Part (I)", divisionalSecretariat: "Nuwaragam Palatha East" },
-  { gnName: "Stage (II) Part (IV)", divisionalSecretariat: "Nuwaragam Palatha East" },
+  { gnName: "Stage (III) part (III)", divisionalSecretariat: "Nuwaragam Palatha East" },
+  { gnName: "Stage (II) part (1)", divisionalSecretariat: "Nuwaragam Palatha East" },
+  { gnName: "Stage (II) part (IV)", divisionalSecretariat: "Nuwaragam Palatha East" },
   { gnName: "Vanniyankulama (IV)", divisionalSecretariat: "Nuwaragam Palatha East" },
   { gnName: "Vanniyankulama (V)", divisionalSecretariat: "Nuwaragam Palatha East" },
   { gnName: "Vanniyankulama (VI)", divisionalSecretariat: "Nuwaragam Palatha East" },
   { gnName: "Ghanikulama", divisionalSecretariat: "Nuwaragam Palatha East" },
   { gnName: "Kawarakkulama", divisionalSecretariat: "Nuwaragam Palatha East" },
-  { gnName: "Maha Paladikulama", divisionalSecretariat: "Nuwaragam Palatha East" },
-  { gnName: "Stage (III) Part (I)", divisionalSecretariat: "Nuwaragam Palatha East" },
-  { gnName: "Stage (III) Part (II)", divisionalSecretariat: "Nuwaragam Palatha East" },
+  { gnName: "MahaPaladikulama", divisionalSecretariat: "Nuwaragam Palatha East" },
+  { gnName: "Stage (III) part (1)", divisionalSecretariat: "Nuwaragam Palatha East" },
+  { gnName: "Stage (III) part (II)", divisionalSecretariat: "Nuwaragam Palatha East" },
   { gnName: "Vanniyankulama (III)", divisionalSecretariat: "Nuwaragam Palatha East" },
-  { gnName: "Vanniyankulama (I)", divisionalSecretariat: "Nuwaragam Palatha East" },
+  { gnName: "Vanniyankulama (1)", divisionalSecretariat: "Nuwaragam Palatha East" },
   { gnName: "Vanniyankulama (II)", divisionalSecretariat: "Nuwaragam Palatha East" },
-  { gnName: "Sucharithagama", divisionalSecretariat: "Nuwaragam Palatha East" }
+  { gnName: "Sucharithagama", divisionalSecretariat: "Nuwaragam Palatha East" },
+
+  { gnName: "Kibulakada", divisionalSecretariat: "Nachchadoowa" },
+  { gnName: "Srawasthipura", divisionalSecretariat: "Nachchadoowa" },
+  { gnName: "Kuda Nelubewa", divisionalSecretariat: "Nachchadoowa" },
+  { gnName: "Srawasthiwaththa", divisionalSecretariat: "Nachchadoowa" },
+
+  { gnName: "Kiralpetiyawa", divisionalSecretariat: "Mahavilachchiya" },
+  { gnName: "Navodagama", divisionalSecretariat: "Mahavilachchiya" },
+  { gnName: "Oyamaduwa", divisionalSecretariat: "Mahavilachchiya" },
+  { gnName: "Halabawewa", divisionalSecretariat: "Mahavilachchiya" },
+  { gnName: "Dunumadalawa", divisionalSecretariat: "Mahavilachchiya" },
+
+  { gnName: "Helambagaswewa", divisionalSecretariat: "Nuwaragam Palatha Central" },
+  { gnName: "Asirikgama", divisionalSecretariat: "Nuwaragam Palatha Central" },
+  { gnName: "Gambirigaswewa", divisionalSecretariat: "Nuwaragam Palatha Central" },
+  { gnName: "Aluthgama", divisionalSecretariat: "Nuwaragam Palatha Central" },
+  { gnName: "Galpottegama", divisionalSecretariat: "Nuwaragam Palatha Central" },
+  { gnName: "Maha Ehetuwewa", divisionalSecretariat: "Nuwaragam Palatha Central" },
+  { gnName: "Maningamuwa", divisionalSecretariat: "Nuwaragam Palatha Central" },
+  { gnName: "Elayapatthuwa", divisionalSecretariat: "Nuwaragam Palatha Central" },
+  { gnName: "Diganegama", divisionalSecretariat: "Nuwaragam Palatha Central" },
+  { gnName: "Karambewa", divisionalSecretariat: "Nuwaragam Palatha Central" },
+  { gnName: "Galkadawela", divisionalSecretariat: "Nuwaragam Palatha Central" },
+  { gnName: "Puwarasankulama", divisionalSecretariat: "Nuwaragam Palatha Central" },
+  { gnName: "Paniyankadawala", divisionalSecretariat: "Nuwaragam Palatha Central" },
+  { gnName: "Parasangaswewa", divisionalSecretariat: "Nuwaragam Palatha Central" },
+  { gnName: "Mankadawala", divisionalSecretariat: "Nuwaragam Palatha Central" },
+  { gnName: "Saliyapura", divisionalSecretariat: "Nuwaragam Palatha Central" },
+  { gnName: "Ashokaramaya", divisionalSecretariat: "Nuwaragam Palatha Central" },
+  { gnName: "Perimiyankulama", divisionalSecretariat: "Nuwaragam Palatha Central" },
+  { gnName: "Katukeliyawa", divisionalSecretariat: "Nuwaragam Palatha Central" },
+  { gnName: "Pusiyankulama", divisionalSecretariat: "Nuwaragam Palatha Central" },
+  { gnName: "Maha Mankadawala", divisionalSecretariat: "Nuwaragam Palatha Central" },
+  { gnName: "Ilandagahawewa", divisionalSecretariat: "Nuwaragam Palatha Central" },
+  { gnName: "Vihara Kallanchiya", divisionalSecretariat: "Nuwaragam Palatha Central" },
+  { gnName: "Vihara Palugama", divisionalSecretariat: "Nuwaragam Palatha Central" },
+  { gnName: "Devanampiyatissa Pura", divisionalSecretariat: "Nuwaragam Palatha Central" },
+  { gnName: "Abayawewa", divisionalSecretariat: "Nuwaragam Palatha Central" },
+  { gnName: "Pethispura", divisionalSecretariat: "Nuwaragam Palatha Central" },
+  { gnName: "Bandara Puliyankulama", divisionalSecretariat: "Nuwaragam Palatha Central" },
+  { gnName: "Jayanthi Gramaya", divisionalSecretariat: "Nuwaragam Palatha Central" },
+  { gnName: "Theppankulama", divisionalSecretariat: "Nuwaragam Palatha Central" },
+  { gnName: "Thannayamkulama", divisionalSecretariat: "Nuwaragam Palatha Central" },
+  { gnName: "Saliya Mawatha", divisionalSecretariat: "Nuwaragam Palatha Central" },
+  { gnName: "Sacred City", divisionalSecretariat: "Nuwaragam Palatha Central" },
+  { gnName: "Tisawewa", divisionalSecretariat: "Nuwaragam Palatha Central" },
+  { gnName: "Wessagiriya", divisionalSecretariat: "Nuwaragam Palatha Central" },
+  { gnName: "Isurumuniya", divisionalSecretariat: "Nuwaragam Palatha Central" },
+  { gnName: "Pandulugama", divisionalSecretariat: "Nuwaragam Palatha Central" },
+  { gnName: "Pahalagama", divisionalSecretariat: "Nuwaragam Palatha Central" },
+  { gnName: "Maha Bulankulama", divisionalSecretariat: "Nuwaragam Palatha Central" },
+  { gnName: "Ulukkulama", divisionalSecretariat: "Nuwaragam Palatha Central" },
+
+  { gnName: "Kolibendawewa", divisionalSecretariat: "Rambewa" },
+  { gnName: "Medagama", divisionalSecretariat: "Rambewa" },
+  { gnName: "Kadurugasdamana", divisionalSecretariat: "Rambewa" },
+  { gnName: "Siyabalagaswewa", divisionalSecretariat: "Rambewa" },
+  { gnName: "Katukeliyawa", divisionalSecretariat: "Rambewa" },
+  { gnName: "Wahamalgollewa Track 5", divisionalSecretariat: "Rambewa" },
+  { gnName: "Sangilikanadarawa", divisionalSecretariat: "Rambewa" },
+  { gnName: "Diviyaudabendawewa", divisionalSecretariat: "Rambewa" },
+  { gnName: "Thalgahawewa", divisionalSecretariat: "Rambewa" },
+  { gnName: "Galkandegama", divisionalSecretariat: "Rambewa" },
+  { gnName: "Balahodawewa", divisionalSecretariat: "Rambewa" },
+  { gnName: "Pihimbeyagollewa", divisionalSecretariat: "Rambewa" },
+  { gnName: "Galweeragollewa", divisionalSecretariat: "Rambewa" },
+  { gnName: "Ambagahawewa", divisionalSecretariat: "Rambewa" },
+  { gnName: "Thamarahalmillewa", divisionalSecretariat: "Rambewa" },
+  { gnName: "Wewelketiya", divisionalSecretariat: "Rambewa" },
+  { gnName: "Ihalakolongaswewa", divisionalSecretariat: "Rambewa" },
+  { gnName: "Konakubukwewa", divisionalSecretariat: "Rambewa" },
+  { gnName: "Kedewa", divisionalSecretariat: "Rambewa" },
+  { gnName: "Kallanchiya", divisionalSecretariat: "Rambewa" },
+  { gnName: "Gonewa", divisionalSecretariat: "Rambewa" },
+  { gnName: "Ikirigollewa", divisionalSecretariat: "Rambewa" },
+  { gnName: "Wahamalgollewa", divisionalSecretariat: "Rambewa" },
+  { gnName: "Wahamalgollewa Track 3", divisionalSecretariat: "Rambewa" },
+  { gnName: "Pallankulama", divisionalSecretariat: "Rambewa" },
+  { gnName: "Mahawewa", divisionalSecretariat: "Rambewa" },
+  { gnName: "Pandukabayapura", divisionalSecretariat: "Rambewa" },
+  { gnName: "Katupuliyankulama", divisionalSecretariat: "Rambewa" },
+  { gnName: "Sandamalgama", divisionalSecretariat: "Rambewa" },
+  { gnName: "Rambewa", divisionalSecretariat: "Rambewa" },
+  { gnName: "Nabadagaswewa", divisionalSecretariat: "Rambewa" },
+  { gnName: "Mahakandarawa South canal Tank 02", divisionalSecretariat: "Rambewa" },
+  { gnName: "Kapirikgama", divisionalSecretariat: "Rambewa" },
+  { gnName: "Peenagama", divisionalSecretariat: "Rambewa" },
+  { gnName: "Meemalwewa", divisionalSecretariat: "Rambewa" },
+  { gnName: "Rotawewa", divisionalSecretariat: "Rambewa" },
+  { gnName: "Kudagama", divisionalSecretariat: "Rambewa" },
+  { gnName: "Mahakandarawa South Canal Track 1", divisionalSecretariat: "Rambewa" },
+
+  { gnName: "Kirigallawa", divisionalSecretariat: "Kahatagasdigiliya" },
+  { gnName: "Rathmalgahawewa", divisionalSecretariat: "Kahatagasdigiliya" },
+  { gnName: "Kudapattiya", divisionalSecretariat: "Kahatagasdigiliya" },
+  { gnName: "Maha Kubukwewa", divisionalSecretariat: "Kahatagasdigiliya" },
+  { gnName: "Palippothana", divisionalSecretariat: "Kahatagasdigiliya" },
+  { gnName: "Gonumeru Wewa", divisionalSecretariat: "Kahatagasdigiliya" },
+  { gnName: "Turukkuragama", divisionalSecretariat: "Kahatagasdigiliya" },
+  { gnName: "Maha Kiribbewa", divisionalSecretariat: "Kahatagasdigiliya" },
 ];
 
 // Helper function to get unique divisional secretariats
 export function getDivisionalSecretariats(): string[] {
   const secretariats = new Set<string>();
-  gnList.forEach(item => secretariats.add(item.divisionalSecretariat));
+  gnList.forEach((item) => secretariats.add(item.divisionalSecretariat));
   return Array.from(secretariats).sort();
 }
 
 // Helper function to get GN names for a specific divisional secretariat
 export function getGNNamesBySecretariat(secretariat: string): string[] {
   return gnList
-    .filter(item => item.divisionalSecretariat === secretariat)
-    .map(item => item.gnName)
+    .filter((item) => item.divisionalSecretariat === secretariat)
+    .map((item) => item.gnName)
     .sort();
 }
 
 // Backward compatibility - export the old array format
-export const gnEnglishNames: string[] = gnList.map(item => item.gnName);
+export const gnEnglishNames: string[] = gnList.map((item) => item.gnName);

@@ -4,6 +4,7 @@ import { useState, FormEvent } from 'react';
 import { toast } from 'react-toastify';
 import { FaUser, FaCalendarAlt, FaUsers, FaMapMarkerAlt, FaHome, FaSave, FaTimes, FaEdit, FaBox, FaPlus, FaTrash, FaIdCard, FaCheckCircle, FaTimesCircle, FaExclamationTriangle, FaWindowClose } from 'react-icons/fa';
 import { gnList, getDivisionalSecretariats, getGNNamesBySecretariat, type GNItem } from '@/lib/locations';
+import SearchableSelect from './SearchableSelect';
 
 interface LostItem {
   name: string;
@@ -628,19 +629,14 @@ export default function PersonForm({ person, onSubmit, onCancel }: PersonFormPro
           <label htmlFor="location">
             <FaMapMarkerAlt className="label-icon" /> Grama Niladari Division *
           </label>
-          <select
+          <SearchableSelect
             id="location"
             value={formData.location}
-            onChange={(e) => setFormData({ ...formData, location: e.target.value })}
+            onChange={(value) => setFormData({ ...formData, location: value })}
+            options={availableGNDivisions}
+            placeholder="Select Grama Niladari Division"
             required
-          >
-            <option value="">Select Grama Niladari Division</option>
-            {availableGNDivisions.map((gnName) => (
-              <option key={gnName} value={gnName}>
-                {gnName}
-              </option>
-            ))}
-          </select>
+          />
         </div>
       </div>
 
