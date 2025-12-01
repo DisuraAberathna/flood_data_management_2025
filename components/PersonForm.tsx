@@ -131,7 +131,7 @@ export default function PersonForm({ person, onSubmit, onCancel }: PersonFormPro
   // Get available GN divisions based on selected divisional secretariat
   const availableGNDivisions = divisionalSecretariat 
     ? getGNNamesBySecretariat(divisionalSecretariat)
-    : gnList.map(item => item.gnName).sort();
+    : Array.from(new Set(gnList.map(item => item.gnName))).sort();
 
   const validateForm = (): boolean => {
     // Validate name

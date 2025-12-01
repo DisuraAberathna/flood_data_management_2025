@@ -1,7 +1,7 @@
 'use client';
 
-import { useState, useMemo } from 'react';
-import { FaSearch, FaFilter, FaSort, FaSortUp, FaSortDown, FaTimes, FaHome, FaUser, FaCalendarAlt, FaUsers, FaMapMarkerAlt, FaInbox, FaBox, FaCheckCircle, FaTimesCircle, FaIdCard, FaEye, FaWindowClose, FaShieldAlt, FaExclamationTriangle, FaExclamationCircle } from 'react-icons/fa';
+import { useState, useMemo, useEffect } from 'react';
+import { FaSearch, FaFilter, FaSort, FaSortUp, FaSortDown, FaTimes, FaHome, FaUser, FaCalendarAlt, FaUsers, FaMapMarkerAlt, FaInbox, FaBox, FaCheckCircle, FaTimesCircle, FaIdCard, FaEye, FaWindowClose, FaShieldAlt, FaExclamationTriangle, FaExclamationCircle, FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 import { gnList, getDivisionalSecretariats, getGNNamesBySecretariat } from '@/lib/locations';
 import SearchableSelect from './SearchableSelect';
 
@@ -48,6 +48,8 @@ export default function AdminPersonList({ people, onRefresh }: AdminPersonListPr
   const [sortField, setSortField] = useState<SortField>('created_at');
   const [sortDirection, setSortDirection] = useState<SortDirection>('desc');
   const [selectedPerson, setSelectedPerson] = useState<Person | null>(null);
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 50;
 
   const filteredAndSortedPeople = useMemo(() => {
     let filtered = [...people];
@@ -101,6 +103,17 @@ export default function AdminPersonList({ people, onRefresh }: AdminPersonListPr
     return filtered;
   }, [people, searchTerm, locationFilter, divisionalSecretariatFilter, sortField, sortDirection]);
 
+  // Pagination calculations
+  const totalPages = Math.ceil(filteredAndSortedPeople.length / itemsPerPage);
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+  const paginatedPeople = filteredAndSortedPeople.slice(startIndex, endIndex);
+
+  // Reset to page 1 when filters change
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [searchTerm, locationFilter, divisionalSecretariatFilter, sortField, sortDirection]);
+
   const handleSort = (field: SortField) => {
     if (sortField === field) {
       setSortDirection(sortDirection === 'asc' ? 'desc' : 'asc');
@@ -152,6 +165,11 @@ export default function AdminPersonList({ people, onRefresh }: AdminPersonListPr
     <div className="admin-list">
       <div className="list-header">
         <h2>Registered People ({filteredAndSortedPeople.length} of {people.length})</h2>
+        {totalPages > 1 && (
+          <div className="pagination-info">
+            Showing {startIndex + 1}-{Math.min(endIndex, filteredAndSortedPeople.length)} of {filteredAndSortedPeople.length}
+          </div>
+        )}
       </div>
 
       <div className="filters-section">
@@ -244,6 +262,7 @@ export default function AdminPersonList({ people, onRefresh }: AdminPersonListPr
               setLocationFilter('all');
               setSortField('created_at');
               setSortDirection('desc');
+              setCurrentPage(1);
             }}
             className="btn btn-secondary"
           >
@@ -281,7 +300,7 @@ export default function AdminPersonList({ people, onRefresh }: AdminPersonListPr
               </tr>
             </thead>
             <tbody>
-              {filteredAndSortedPeople.map((person) => {
+              {paginatedPeople.map((person) => {
                 // Parse lost_items if it's a string
                 let lostItems: LostItem[] = [];
                 if (person.lost_items) {
@@ -331,6 +350,54 @@ export default function AdminPersonList({ people, onRefresh }: AdminPersonListPr
               })}
             </tbody>
           </table>
+        </div>
+      )}
+
+      {/* Pagination Controls */}
+      {totalPages > 1 && (
+        <div className="pagination">
+          <button
+            className="pagination-btn"
+            onClick={() => setCurrentPage(prev => Math.max(1, prev - 1))}
+            disabled={currentPage === 1}
+          >
+            <FaChevronLeft /> Previous
+          </button>
+          
+          <div className="pagination-pages">
+            {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => {
+              // Show first page, last page, current page, and pages around current
+              if (
+                page === 1 ||
+                page === totalPages ||
+                (page >= currentPage - 2 && page <= currentPage + 2)
+              ) {
+                return (
+                  <button
+                    key={page}
+                    className={`pagination-page ${currentPage === page ? 'active' : ''}`}
+                    onClick={() => setCurrentPage(page)}
+                  >
+                    {page}
+                  </button>
+                );
+              } else if (
+                page === currentPage - 3 ||
+                page === currentPage + 3
+              ) {
+                return <span key={page} className="pagination-ellipsis">...</span>;
+              }
+              return null;
+            })}
+          </div>
+
+          <button
+            className="pagination-btn"
+            onClick={() => setCurrentPage(prev => Math.min(totalPages, prev + 1))}
+            disabled={currentPage === totalPages}
+          >
+            Next <FaChevronRight />
+          </button>
         </div>
       )}
 

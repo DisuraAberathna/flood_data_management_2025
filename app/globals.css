@@ -890,12 +890,18 @@ select option:disabled {
 
 .list-header {
   margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 12px;
 }
 
 .list-header h2 {
   color: #171c27;
   font-size: 1.8rem;
   font-weight: 600;
+  margin: 0;
 }
 
 .table-container {
@@ -1968,6 +1974,94 @@ tbody td {
   opacity: 1;
 }
 
+/* Pagination Styles */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  margin-top: 30px;
+  padding: 20px 0;
+}
+
+.pagination-info {
+  font-size: 0.9rem;
+  color: #6c757d;
+  margin-top: 8px;
+}
+
+.pagination-btn {
+  padding: 8px 16px;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  background-color: #fff;
+  color: #171c27;
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.pagination-btn:hover:not(:disabled) {
+  border-color: #892AFA;
+  background-color: #f8f9fa;
+  color: #892AFA;
+}
+
+.pagination-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.pagination-pages {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+}
+
+.pagination-page {
+  min-width: 40px;
+  height: 40px;
+  padding: 0 12px;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  background-color: #fff;
+  color: #171c27;
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pagination-page:hover {
+  border-color: #892AFA;
+  background-color: #f8f9fa;
+  color: #892AFA;
+}
+
+.pagination-page.active {
+  background-color: #892AFA;
+  border-color: #892AFA;
+  color: #fff;
+}
+
+.pagination-page.active:hover {
+  background-color: #7a25e0;
+  border-color: #7a25e0;
+}
+
+.pagination-ellipsis {
+  padding: 0 8px;
+  color: #6c757d;
+  font-size: 0.95rem;
+}
+
 /* Footer Styles */
 .footer {
   background: linear-gradient(135deg, #171c27 0%, #1f2533 100%);
@@ -2169,6 +2263,35 @@ tbody td {
   color: #6c757d;
   font-style: italic;
   padding: 10px 0;
+}
+
+/* Responsive Pagination */
+@media (max-width: 768px) {
+  .pagination {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .pagination-btn {
+    padding: 6px 12px;
+    font-size: 0.9rem;
+  }
+
+  .pagination-page {
+    min-width: 36px;
+    height: 36px;
+    padding: 0 8px;
+    font-size: 0.9rem;
+  }
+
+  .list-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .pagination-info {
+    font-size: 0.85rem;
+  }
 }
 
 /* Responsive Modal */
